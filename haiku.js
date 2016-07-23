@@ -35,35 +35,22 @@ function formatData(data){
 }
 
 //return all of the words in syllables
-formatData(cmudictFile);
-
-/*
-//splitting up into syllable
-function getNumOfSyl(data){       
-    return data[1].split(" ").length;
-}  
+var dictionary = formatData(cmudictFile);
 
 
-//construct data base with number of syllable
-
-function sortBySyllable (data){
-  var wordBySyllable = {};
-  for(var i =0; i< data.length; i++){
-    var numOfSyl = getNumOfSyl(data[i]);
-    if(!wordBySyllable[numOfSyl]){
-      wordBySyllable[numOfSyl] = [data[i][0]] 
-    }else{
-      wordBySyllable[numOfSyl].push(data[i][0])
-    }
+function createHaiku (arr){
+  var haikuArray = [];
+  for(var i = 0; i < arr.length; i++){
+      index = Math.floor(Math.random() * dictionary[arr[i]].length);
+     haikuArray.push(dictionary[arr[i]][index])
   }
-  return wordBySyllable
+  console.log(haikuArray.join("\n"))
+  return haikuArray.join("\n");
 }
 
-var sylDatabase = sortBySyllable(listOfWords);
-console.log(sylDatabase)
 
-//get random word
-*/
+createHaiku([2,3,4]);
+
 
 
 function haikuFacts(structure){
@@ -73,7 +60,7 @@ function haikuFacts(structure){
 
 
 module.exports = {
-  	haikuFacts: haikuFacts([5,7,5]),
+  	haikuFacts: haikuFacts([2,3,4]),
     formatData: formatData(cmudictFile),
 
 };
